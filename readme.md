@@ -76,7 +76,7 @@ Contributions are what make the open-source community such an amazing place to l
 ---
 
 ### ⚠️ Disclaimer
-This repository is intended for educational purposes only. The information provided should be used ethically and legally. I do not promote or support any illegal activities.
+> This repository is intended for educational purposes only. The information provided should be used ethically and legally. I do not promote or support any illegal activities.
 
 ---
 
