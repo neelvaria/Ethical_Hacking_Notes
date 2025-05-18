@@ -37,7 +37,7 @@ This README provides comprehensive notes and reference material for the Reconnai
 
 ## Passive Reconnaissance Techniques
 
-| Technique                 | Description                                          | Example Command / URL                               |
+| **Technique**                 | **Description**                                          | **Example Command / URL**                             |
 |---------------------------|------------------------------------------------------|-----------------------------------------------------|
 | WHOIS Lookup              | Domain registrar, ownership, DNS servers             | `whois example.com`                                 |
 | DNS Enumeration           | Retrieve DNS records                                 | `dig +short example.com any`<br>`host -a example.com`|
@@ -150,11 +150,9 @@ enum4linux -a target.com
 
 | Aspect             | Passive Recon              | Active Recon                   |
 |--------------------|-----------------------------|--------------------------------|
-| Detection Risk     | Very low                    | Moderate to high               |
-| Data Depth         | Surface-level (public)      | Deep (service versions)        |
-| Typical Tools      | OSINT frameworks, search    | Nmap, Netcat, Masscan          |
-| Legal Concerns     | Minimal (public data only)  | Higher (network probing)       |
+| **Detection Risk**     | Very low                    | Moderate to high               |
+| **Data Depth**         | Surface-level (public)      | Deep (service versions)        |
+| **Typical Tools**      | OSINT frameworks, search    | Nmap, Netcat, Masscan          |
+| **Legal Concerns**     | Minimal (public data only)  | Higher (network probing)       |
 
 ---
-
-*End of README for Reconnaissance Phase of Ethical Hacking.*

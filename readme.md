@@ -8,7 +8,7 @@ Welcome to the **Ethical Hacking Notes** repository! This is a curated collectio
 
 This repository includes notes on:
 
-- **Footprinting and Reconnaissance**
+- [**Footprinting and Reconnaissance**](https://github.com/neelvaria/Ethical_Hacking_Notes/blob/master/Reconnaissance%20Phase%20of%20Ethical%20Hackin.md)
 - **Scanning Networks**
 - **Enumeration**
 - **Vulnerability Analysis**
