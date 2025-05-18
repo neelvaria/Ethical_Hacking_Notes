@@ -83,3 +83,10 @@ This repository serves as:
 #### 🔗 Connect with Me :
 [LinkedIn](https://www.linkedin.com/in/neelvaria/)
 [Github](https://github.com/neelvaria)
+
+---
+
+```bash
+Let me know if you’d like me to insert your actual username or profile links, or if you want to add contribution badges, a contributors table, or GitHub Actions to auto-check PRs.
+```
+
