@@ -52,7 +52,7 @@ This repository serves as:
 
 ## 🤝 Contributions
 
-Contributions are what make the open-source community such an amazing place to learn and share. If you have something valuable to add—like new topics, better explanations, practical tools, or real-world examples—feel free to contribute!
+<b>Contributions are what make the open-source community such an amazing place to learn and share. If you have something valuable to add—like new topics, better explanations, practical tools, or real-world examples—feel free to contribute!</b>
 
 ### Steps of Contribute 
 1. Fork this Project
