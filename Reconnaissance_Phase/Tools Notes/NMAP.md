@@ -84,7 +84,8 @@ nmap -sS -sV -sC -A -O -p- 192.168.1.1 [Example-Target]
 
 ---
 
-![image](E:/Ethical Hacking Notes/Reconnaissance Phase/Images/Host Discovery.webp)
+![Host Discovery](./Reconnaissance_Phase/Images/HostDiscovery.png)
+
 
 Here's what a basic host discovery scan looks like:
 
