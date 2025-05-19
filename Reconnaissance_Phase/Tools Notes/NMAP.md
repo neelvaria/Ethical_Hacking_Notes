@@ -1,32 +1,33 @@
-# Cheat Sheet to NMAP for Reconnaissance
+# 🛠️ Cheat Sheet to **Nmap** for Reconnaissance
 
-<b>NMAP (Network Mapper)</b> is one of the most powerful and widely used tools for network reconnaissance and security auditing. This guide covers everything you need to know about using NMAP effectively during the reconnaissance phase of security assessments.
+**🔍 Nmap (Network Mapper)** is one of the most powerful and widely used tools for **network reconnaissance** and **security auditing**. This guide covers everything you need to know to use Nmap effectively during the **reconnaissance phase** of security assessments.
+---
+
+## What is Nmap❓
+
+**🧰 Nmap is an open-source utility for network discovery and security auditing.**  
+Created by **Gordon Lyon** (aka *Fyodor*), it’s designed to rapidly scan large networks or single hosts to determine:
+
+- Available hosts on a network  
+- Services (ports) those hosts are offering  
+- Operating systems they're running  
+- Types of packet filters/firewalls in use  
+- And many more characteristics...
+
+---
+## 💡 Why Use Nmap?
+
+1. **Comprehensive Network Mapping** – Quickly identify all devices connected to a network  
+2. **Service Enumeration** – Discover what services are running on target systems  
+3. **Vulnerability Assessment** – Detect potential weaknesses based on open ports and services  
+4. **OS Detection** – Determine operating systems to tailor your approach  
+5. **Firewall/IDS Evasion** – Test how well the network defends itself  
+6. **Baseline Creation** – Establish normal network behavior  
+7. **Efficiency** – Automate discovery processes that would be time-consuming manually
 
 ---
 
-## What is NMAP ?
-<b>NMAP is an open-source utility for network discovery and security auditing.</b> Created by Gordon Lyon (also known as Fyodor), it's designed to rapidly scan large networks or single hosts to determine:
-
-- Available hosts on a network
-- Services (ports) those hosts are offering
-- Operating systems they're running
-- Types of packet filters/firewalls in use
-- And dozens of other characteristics
-
----
-
-## Why Use NMAP ?
-1. **Comprehensive Network Mapping**: Quickly identify all devices connected to a network
-2. **Service Enumeration**: Discover what services are running on target systems
-3. **Vulnerability Assessment**: Identify potential security weaknesses based on open ports and services
-4. **OS Detection**: Determine operating systems to tailor exploitation attempts
-5. **Firewall/IDS Evasion**: Test network security controls
-6. **Baseline Creation**: Establish a network baseline for future comparison
-7. **Efficiency**: Automate discovery that would be impractical to perform manually.
-
----
-
-## When to Use NMAP
+## 🕒 When to Use Nmap ?
 1. **Initial Reconnaissance**: At the beginning of a penetration test to identify targets
 2. **Network Auditing**: Regular security assessments of your infrastructure
 3. **System Administration**: Verifying network configurations and changes
@@ -374,6 +375,7 @@ nmap -oA scan_results 192.168.1.1
 - Combine multiple options for maximum insight.
 - Be ethical—get proper authorization before scanning!
 ---
+
 ## 📷 Images & Diagrams
 
 > 🖼️ If you want to embed images from GitHub:
