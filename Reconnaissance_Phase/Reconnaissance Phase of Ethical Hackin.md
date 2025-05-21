@@ -64,7 +64,7 @@ This README provides comprehensive notes and reference material for the Reconnai
 ## Key Tools & Frameworks
 
 ### Passive Recon Tools
-- **theHarvester**:
+- [**theHarvester**](https://github.com/neelvaria/Ethical_Hacking_Notes/blob/master/Reconnaissance_Phase/Tools%20Notes/theHarvester.md):
   ```bash
   theharvester -d example.com -l 200 -b google
   ```
