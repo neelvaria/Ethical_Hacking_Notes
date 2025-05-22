@@ -16,8 +16,7 @@ TCP (Transmission Control Protocol) is a **connection-oriented**, **reliable**, 
 
 ## TCP Header Format
 
-https://raw.githubusercontent.com/neelvaria/Ethical_Hacking_Notes/master/Networking_Protocols/Images/TCP_Header.jpg
-
+![TCP Header Format](https://raw.githubusercontent.com/neelvaria/Ethical_Hacking_Notes/master/Networking_Protocols/Images/TCP_Header.jpg)
 
 
 | Field                     | Size (bits) | Description                              |
@@ -46,7 +45,7 @@ https://raw.githubusercontent.com/neelvaria/Ethical_Hacking_Notes/master/Network
 
 ## 🔄 Connection Establishment (3-Way Handshake)
 
-![TCP 3-Way Handshake](https://upload.wikimedia.org/wikipedia/commons/5/5c/TCP_3-way_handshake.png)
+![TCP 3-Way Handshake](https://raw.githubusercontent.com/neelvaria/Ethical_Hacking_Notes/master/Networking_Protocols/Images/3-Way_Handshake_🤝.webp)
 
 1. **SYN:** Client sends SYN to server.
 2. **SYN-ACK:** Server responds with SYN-ACK.
@@ -54,7 +53,7 @@ https://raw.githubusercontent.com/neelvaria/Ethical_Hacking_Notes/master/Network
 
 ## 🔁 Connection Termination (4-Way Handshake)
 
-![TCP 4-Way Handshake](https://upload.wikimedia.org/wikipedia/commons/2/21/TCP_connection_termination.svg)
+![TCP 4-Way Handshake](https://raw.githubusercontent.com/neelvaria/Ethical_Hacking_Notes/master/Networking_Protocols/Images/4-Way_Handshake_🤝.png)
 
 1. **FIN:** Sender wants to close connection.
 2. **ACK:** Receiver acknowledges.
