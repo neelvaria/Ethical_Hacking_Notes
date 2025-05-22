@@ -1,65 +1,193 @@
-# Comprehensive HTTP & HTTPS Protocol Guide 
 
-## Table of Contents - 
-- [Introduction](#introduction) 
-- [HTTP Basics](#http-basics) 
-- [HTTP Request Structure](#http-request-structure) 
-- [HTTP Response Structure](#http-response-structure) 
-- [HTTP Methods](#http-methods) 
-- [HTTP Status Codes](#http-status-codes) 
-- [HTTP Headers](#http-headers) 
-- [HTTP Versions](#http-versions) 
-- [HTTPS (HTTP Secure)](#https-http-secure) 
-- [Cookies and Sessions](#cookies-and-sessions) 
-- [Caching](#caching) 
-- [Content Negotiation](#content-negotiation) 
-- [Authentication](#authentication) 
-- [Cross-Origin Resource Sharing (CORS)](#cross-origin-resource-sharing-cors) 
-- [Security Considerations](#security-considerations) 
-- [Performance Optimization](#performance-optimization) 
-- [Debugging Tools](#debugging-tools) 
-- [Best Practices](#best-practices) 
-- [References](#references) 
+# Detailed Notes on HTTP & HTTPS Protocol
 
-**Introduction HTTP (Hypertext Transfer Protocol) and HTTPS (HTTP Secure)** are the foundation of data communication on the World Wide Web. They define how messages are formatted and transmitted, and how web servers and browsers should respond to various commands. 
+## 📑 Index
 
----
-### History 
-- **1989-1991**: Tim Berners-Lee develops HTTP at CERN as part of the World Wide Web project 
-- **1996**: HTTP/1.0 formalized in RFC 1945 
-- **1997**: HTTP/1.1 introduced in RFC 2068 (updated in RFC 2616 and later RFC 7230-7235) 
-- **2015**: HTTP/2 standardized in RFC 7540 
-- **2022**: HTTP/3 standardized in RFC 9114 ## HTTP Basics HTTP is an application layer protocol that operates on a client-server model. 
+1. [Introduction](#-1-introduction)
+2. [What is HTTP?](#-2-what-is-http)
+3. [What is HTTPS?](#-3-what-is-https)
+4. [SSL/TLS Overview](#️-4-ssltls-overview)
+5. [HTTP Methods](#-5-http-methods)
+6. [HTTP vs HTTPS - Detailed Comparison](#-6-http-vs-https---detailed-comparison)
+7. [Why Use HTTPS?](#️-7-why-use-https)
+8. [Related Terms](#-8-related-terms)
+9. [How to Identify HTTPS in Browser](#-9-how-to-identify-https-in-browser)
+10. [Mnemonics to Remember](#-10-mnemonics-to-remember)
+11. [Summary](#-11-summary)
+12. [Final Note](#-12-final-note)
 ---
 
-### Key Characteristics 
-- **Stateless**: Each request from a client to server is treated as a new request with no memory of previous requests 
-- **Client-Server Model**: Communication always initiated by the client (typically a web browser) 
-- **Text-based** (HTTP/1.x): Messages are human-readable (HTTP/2 and HTTP/3 use binary formats) 
-- **Port 80**: Standard port for HTTP communication 
-- **Connectionless** (HTTP/1.0): Each request/response pair requires a new TCP connection 
-- **Persistent Connections** (HTTP/1.1+): Multiple requests can use the same connection 
+## 1. Introduction
+
+HTTP and HTTPS are both protocols used for transmitting hypertext (web) data between a client (usually a web browser) and a server. The main difference lies in the way the data is transmitted—HTTPS adds security features using encryption.
+
 ---
 
-### HTTP Communication Flow 
-1. Client establishes a connection to the server 
-2. Client sends an HTTP request 
-3. Server processes the request 
-4. Server returns an HTTP response 
-5. Connection is maintained or closed depending on headers and HTTP version 
+## 2. What is HTTP?
 
-## HTTP Request Structure An HTTP request consists of: 
-1. **Request line**: Contains the method, URI, and HTTP version 
-2. **Headers**: Metadata about the request 
-3. **Empty line**: Indicates the end of headers 
-4. **Body** (optional): Contains data sent to the server ### Example Request ``` GET /index.html HTTP/1.1 Host: www.example.com User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) Accept: text/html,application/xhtml+xml Accept-Language: en-US,en;q=0.9 Accept-Encoding: gzip, deflate, br Connection: keep-alive Cookie: session=abc123; preference=dark ``` 
+###  Definition
 
-## HTTP Response Structure An HTTP response consists of: 
-1. **Status line**: Contains HTTP version, status code, and reason phrase 
-2. **Headers**: Metadata about the response 
-3. **Empty line**: Indicates the end of headers 
-4. **Body** (optional): Contains the requested resource ### Example Response ``` HTTP/1.1 200 OK Date: Mon, 19 May 2025 23:15:42 GMT Server: Apache/2.4.41 (Ubuntu) Content-Type: text/html; charset=UTF-8 Content-Length: 1234 Last-Modified: Wed, 14 May 2025 12:10:15 GMT ETag: "31415926535-1234-20250514121015" Cache-Control: max-age=3600 Connection: keep-alive```
-<!DOCTYPE html> <html> <head> <title>Example Page</title> </head> <body> <h1>Hello, World!</h1> <!-- Rest of the HTML content --> </body> </html> ``` 
+HTTP stands for **HyperText Transfer Protocol**. It is an application-layer protocol used for transmitting hypermedia documents, such as HTML. It is the foundation of any data exchange on the Web.
 
-### HTTP Methods HTTP defines several request methods (also called "verbs") that indicate the desired action to be performed on the identified resource. 
-| Method | Description | Properties | Common Use Cases | |--------|-------------|------------|------------------| | GET | Retrieve data | Safe, Idempotent, Cacheable | Fetching web pages, API data retrieval | | POST | Submit data | Not safe, Not idempotent, Not cacheable | Form submissions, creating resources | | PUT | Replace a resource | Not safe, Idempotent, Not cacheable | Updating resources with complete replacement | | DELETE | Remove a resource | Not safe, Idempotent, Not cacheable | Removing resources | | HEAD | GET without body | Safe, Idempotent, Cacheable | Checking if resource exists or has changed | | OPTIONS | Get supported methods | Safe, Idempotent, Not cacheable | CORS preflight, API capability discovery | | PATCH | Partial update | Not safe, Not idempotent, Not cacheable | Partial resource updates | | TRACE | Echo request | Safe, Idempotent, Not cacheable | Debugging | | CONNECT | Tunnel connection | Not safe, Not idempotent, Not cacheable | Setting up SSL tunnels | ### Properties Explained - **Safe**: Does not alter the server state - **Idempotent**: Multiple identical requests have the same effect as a single request - **Cacheable**: Response can be cached for future use ## HTTP Status Codes Status codes indicate the result of the HTTP request. ### Categories - **1xx**: Informational - Request received, continuing process - **2xx**: Success - Request successfully received, understood, and accepted - **3xx**: Redirection - Further action needed to complete the request - **4xx**: Client Error - Request contains bad syntax or cannot be fulfilled - **5xx**: Server Error - Server failed to fulfill a valid request ### Common Status Codes | Code | Message | Description | |------|---------|-------------| | 200 | OK | Request succeeded | | 201 | Created | Resource created successfully | | 204 | No Content | Request succeeded but no content returned | | 301 | Moved Permanently | Resource permanently moved to a new URL | | 302 | Found | Resource temporarily moved to a different URL | | 304 | Not Modified | Resource has not changed since last request | | 400 | Bad Request | Server cannot process due to client error | | 401 | Unauthorized | Authentication required | | 403 | Forbidden | Server refuses to authorize request | | 404 | Not Found | Requested resource not found | | 405 | Method Not Allowed | HTTP method not allowed for this resource | | 429 | Too Many Requests | Client has sent too many requests | | 500 | Internal Server Error | Generic server error | | 502 | Bad Gateway | Server acting as gateway received invalid response | | 503 | Service Unavailable | Server temporarily unavailable | | 504 | Gateway Timeout | Gateway timeout waiting for response | ## HTTP Headers Headers provide additional information about the request or response. ### Common Request Headers | Header | Description | Example | |--------|-------------|---------| | Accept | Media types the client can process | `Accept: text/html,application/json` | | Accept-Encoding | Compression algorithms supported | `Accept-Encoding: gzip, deflate` | | Authorization | Authentication credentials | `Authorization: Bearer eyJhbGciOi...` | | Cache-Control | Caching directives | `Cache-Control: no-cache` | | Connection | Connection management | `Connection: keep-alive` | | Content-Type | Format of the request body | `Content-Type: application/json` | | Cookie | Stored HTTP cookies | `Cookie: session=abc123` | | Host | Domain name of the server | `Host: www.example.com` | | User-Agent | Client application information | `User-Agent: Mozilla/5.0 (Windows NT 10.0)` | | Referer | URL of the previous web page | `Referer: https://www.google.com` | ### Common Response Headers | Header | Description | Example | |--------|-------------|---------| | Access-Control-Allow-Origin | CORS header | `Access-Control-Allow-Origin: *` | | Cache-Control | Caching directives | `Cache-Control: max-age=3600` | | Content-Encoding | Compression used | `Content-Encoding: gzip` | | Content-Length | Size of the response body | `Content-Length: 1234` | | Content-Type | Format of the response body | `Content-Type: text/html; charset=UTF-8` | | Date | Date and time of the response | `Date: Mon, 19 May 2025 23:15:42 GMT` | | ETag | Resource version identifier | `ETag: "31415926535-1234"` | | Expires | Date/time after which response is stale | `Expires: Tue, 20 May 2025 23:15:42 GMT` | | Last-Modified | Date/time resource was last modified | `Last-Modified: Wed, 14 May 2025 12:10:15 GMT` | | Location | URL for redirection | `Location: https://www.example.com/new-page` | | Server | Server software information | `Server: Apache/2.4.41 (Ubuntu)` | | Set-Cookie | Sets an HTTP cookie | `Set-Cookie: session=abc123; Path=/; HttpOnly` | ## HTTP Versions ### HTTP/1.0 (1996) - Basic functionality with methods, headers, and status codes - New connection for each request-response pair - Limited caching capabilities ### HTTP/1.1 (1997) - Persistent connections (keep-alive) - Chunked transfer encoding - Additional caching mechanisms - Host header (allowing virtual hosting) - Additional methods (PUT, DELETE, etc.) - Content negotiation ### HTTP/2 (2015) - Binary protocol instead of text-based - Multiplexing (multiple requests over a single connection) - Header compression (HPACK) - Server push (server can send resources before they're requested) - Request prioritization - Designed for lower latency ### HTTP/3 (2022) - Based on QUIC transport protocol over UDP (not TCP) - Improved connection establishment (0-RTT) - Better performance on unreliable networks - Independent streams (no head-of-line blocking) - Built-in encryption (TLS 1.3) - Improved mobility support ## HTTPS (HTTP Secure) HTTPS is HTTP with an added security layer using SSL/TLS. ### Key Characteristics - **Encrypted communications**: Prevents eavesdropping - **Data integrity**: Prevents data tampering - **Authentication**: Verifies the identity of the website - **Port 443**: Standard port for HTTPS communication - **URLs**: Begin with "https://" - **Visual indicators**: Padlock icon in browsers ### How HTTPS Works 1. **Client Hello**: Browser connects to HTTPS server and sends supported cipher suites 2. **Server Hello**: Server chooses cipher suite and sends certificate 3. **Certificate Verification**: Browser verifies certificate with Certificate Authority 4. **Key Exchange**: Secure symmetric key is established 5. **Encrypted Communication**: Data is encrypted using the symmetric key ### SSL/TLS Handshake Process ``` Client Server | | | ClientHello (supported ciphers, random1) | |---------------------------------------------->| | | | ServerHello (chosen cipher, random2) | | Certificate | |<----------------------------------------------| | | | ClientKeyExchange (encrypted pre-master key) | | ChangeCipherSpec | | Finished | |---------------------------------------------->| | | | ChangeCipherSpec | | Finished | |<----------------------------------------------| | | | Application Data (encrypted) | |<--------------------------------------------->| | | ``` ### SSL/TLS Versions - **SSL 2.0** (1995): Deprecated due to security flaws - **SSL 3.0** (1996): Deprecated due to POODLE vulnerability - **TLS 1.0** (1999): Deprecated due to various vulnerabilities - **TLS 1.1** (2006): Deprecated due to various vulnerabilities - **TLS 1.2** (2008): Widely used, considered secure with proper configuration - **TLS 1.3** (2018): Current version with improved security and performance ## Cookies and Sessions Cookies are small pieces of data stored by the browser that help maintain state in the stateless HTTP protocol. ### Cookie Attributes - **Name=Value**: The data stored in the cookie - **Domain**: Specifies which domains can receive the cookie - **Path**: Limits the cookie to specific paths on the server - **Expires/Max-Age**: Sets when the cookie should be deleted - **Secure**: Cookie only sent over HTTPS connections - **HttpOnly**: Prevents JavaScript access to the cookie - **SameSite**: Controls when cookies are sent with cross-site requests ### Example Set-Cookie Header ``` Set-Cookie: session=abc123; Path=/; Domain=example.com; Expires=Wed, 21 May 2025 07:28:00 GMT; Secure; HttpOnly; SameSite=Strict ``` ### Session Management 1. **Server creates session**: Generates unique session ID 2. **Server sends session cookie**: Via Set-Cookie header 3. **Client stores cookie**: In browser storage 4. **Client sends cookie**: With each subsequent request 5. **Server identifies user**: By looking up session ID ## Caching HTTP caching mechanisms reduce latency and network traffic. ### Cache-Control Directives | Directive | Description | Example | |-----------|-------------|---------| | max-age | Maximum time in seconds to cache | `Cache-Control: max-age=3600` | | s-maxage | Max age for shared caches | `Cache-Control: s-maxage=7200` | | no-cache | Must revalidate before using cached copy | `Cache-Control: no-cache` | | no-store | Don't cache at all | `Cache-Control: no-store` | | public | Response can be cached by any cache | `Cache-Control: public, max-age=86400` | | private | Response only for single user | `Cache-Control: private, max-age=3600` | | must-revalidate | Must verify stale resources | `Cache-Control: must-revalidate` | | immutable | Content won't change | `Cache-Control: max-age=31536000, immutable` | ### ETag and Conditional Requests 1. **Server sends ETag**: `ETag: "33a64df551425fcc55e4d42a148795d9f25f89d4"` 2. **Client stores ETag**: With the cached response 3. **Client sends conditional request**: `If-None-Match: "33a64df551425fcc55e4d42a148795d9f25f89d4"` 4. **Server checks if resource changed**: - If unchanged: Returns `304 Not Modified` (no body) - If changed: Returns `200 OK` with new content and ETag ## Content Negotiation Content negotiation allows the client and server to determine the most appropriate representation of a resource. ### Negotiation Headers - **Accept**: Media types (MIME types) the client can process - **Accept-Language**: Natural languages the client prefers - **Accept-Encoding**: Content encodings the client can handle - **Accept-Charset**: Character sets the client can handle ### Example Request: ``` GET /document HTTP/1.1 Host: example.com Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8 Accept-Language: en-US,en;q=0.5 Accept-Encoding: gzip, deflate, br ``` Response: ``` HTTP/1.1 200 OK Content-Type: text/html; charset=UTF-8 Content-Language: en-US Content-Encoding: gzip Vary: Accept, Accept-Language, Accept-Encoding ``` ## Authentication HTTP provides several authentication mechanisms. ### Basic Authentication 1. **Server requests authentication**: `WWW-Authenticate: Basic realm="User Visible Realm"` 2. **Client sends credentials**: `Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==` (base64 encoded username:password) ### Bearer Token Authentication Used with OAuth 2.0 and JWT: ``` Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c ``` ### Digest Authentication More secure than Basic Authentication: ``` Authorization: Digest username="user", realm="example.com", nonce="dcd98b7102dd2f0e8b11d0f600bfb0c093", uri="/api/resource", response="6629fae49393a05397450978507c4ef1" ``` ### OAuth 2.0 Flow 1. **Client requests authorization**: Redirects user to authorization server 2. **User authenticates**: Grants permissions to the client 3. **Authorization server issues code**: Redirects back to client 4. **Client exchanges code for token**: Sends code to token endpoint 5. **Client uses token**: Includes token in API requests ## Cross-Origin Resource Sharing (CORS) CORS is a security feature that restricts web pages from making requests to a different domain than the one that served the original page. ### Simple Requests For simple requests, the server includes: ``` Access-Control-Allow-Origin: https://example.com Access-Control-Allow-Credentials: true Access-Control-Expose-Headers: Content-Length, X-Custom-Header ``` ### Preflight Requests For complex requests, the browser first sends an OPTIONS request: Request: ``` OPTIONS /api/data HTTP/1.1 Host: api.example.com Origin: https://app.example.com Access-Control-Request-Method: PUT Access-Control-Request-Headers: Content-Type, X-Custom-Header ``` Response: ``` HTTP/1.1 204 No Content Access-Control-Allow-Origin: https://app.example.com Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS Access-Control-Allow-Headers: Content-Type, X-Custom-Header Access-Control-Max-Age: 86400 ``` ## Security Considerations ### Common HTTP Security Issues - **Man-in-the-Middle (MITM) Attacks**: Intercepting unencrypted communications - **Cross-Site Scripting (XSS)**: Injecting malicious scripts into web pages - **Cross-Site Request Forgery (CSRF)**: Tricking users into making unwanted requests - **HTTP Response Splitting**: Exploiting header injection vulnerabilities - **Session Hijacking**: Stealing session cookies to impersonate users - **Open Redirects**: Redirecting users to malicious sites - **Content Sniffing**: Browser guessing content type leading to security issues ### Security Headers | Header | Purpose | Example | |--------|---------|---------| | Content-Security-Policy | Controls resources the browser can load | `Content-Security-Policy: default-src 'self'` | | Strict-Transport-Security | Forces HTTPS connections | `Strict-Transport-Security: max-age=31536000; includeSubDomains` | | X-Content-Type-Options | Prevents content type sniffing | `X-Content-Type-Options: nosniff` | | X-Frame-Options | Controls if page can be displayed in frames | `X-Frame-Options: DENY` | | X-XSS-Protection | Enables browser's XSS filter | `X-XSS-Protection: 1; mode=block` | | Referrer-Policy | Controls referrer information | `Referrer-Policy: strict-origin-when-cross-origin` | | Permissions-Policy | Controls browser features | `Permissions-Policy: camera=(), microphone=()` | ### HTTPS Best Practices - Use TLS 1.2 or 1.3 only - Configure secure cipher suites - Implement HSTS (HTTP Strict Transport Security) - Use secure cookies - Obtain certificates from trusted CAs - Regularly rotate and update certificates - Redirect HTTP to HTTPS - Use proper certificate key lengths (RSA 2048+ bits) ## Performance Optimization ### HTTP Performance Techniques - **Minimize HTTP Requests**: Combine files, use sprites, inline critical resources - **Use HTTP/2 or HTTP/3**: For multiplexing and reduced latency - **Enable Compression**: Use gzip or Brotli compression - **Leverage Browser Caching**: Set appropriate cache headers - **Use CDNs**: Distribute content geographically closer to users - **Implement Resource Hints**: dns-prefetch, preconnect, preload, prefetch - **Optimize TLS**: Session resumption, OCSP stapling, optimized cipher suites - **Reduce Cookie Size**: Minimize data sent with every request ### Resource Hints ```html &lt;!-- DNS Prefetch --> <link rel="dns-prefetch" href="//example.com"> &lt;!-- Preconnect --> <link rel="preconnect" href="https://example.com"> &lt;!-- Preload --> <link rel="preload" href="style.css" as="style"> &lt;!-- Prefetch --> <link rel="prefetch" href="page2.html"> &lt;!-- Prerender --> <link rel="prerender" href="next-page.html">
+###  Characteristics
+
+- **Stateless:** Each request from a client is independent of previous requests.
+- **Connectionless:** The client initiates a request, the server processes it and disconnects.
+- **Text-based:** Requests and responses are readable.
+- **Unsecured:** Data is sent as plain text, making it vulnerable to interception.
+
+### Default Port
+- **Port 80**
+
+###  HTTP Versions
+
+| Version | Features |
+|---------|----------|
+| HTTP/0.9 | Simple protocol, only GET method |
+| HTTP/1.0 | Introduced POST and status codes |
+| HTTP/1.1 | Persistent connections, chunked transfers |
+| HTTP/2   | Binary framing, multiplexing, header compression |
+| HTTP/3   | Based on QUIC protocol, faster and secure |
+
+###  HTTP Request Structure
+
+```
+GET /index.html HTTP/1.1
+Host: www.example.com
+User-Agent: Mozilla/5.0
+Accept: text/html
+```
+
+###  HTTP Response Structure
+
+```
+HTTP/1.1 200 OK
+Content-Type: text/html
+Content-Length: 305
+
+<html>...</html>
+```
+
+---
+
+## 3. What is HTTPS?
+
+###  Definition
+
+**HTTPS** stands for **HyperText Transfer Protocol Secure**. It is the secure version of HTTP. It uses **SSL/TLS protocols** to encrypt data transmission, ensuring privacy and data integrity.
+
+###  Key Components
+
+- **SSL/TLS:** Protocol used to encrypt communication.
+- **Digital Certificate (X.509):** Issued by Certificate Authorities (CAs) to validate domain ownership.
+- **Handshake Process:** Exchange of keys before encrypted data transfer.
+
+###  Default Port
+- **Port 443**
+
+###  HTTPS Workflow
+
+1. Client connects to the server via HTTPS.
+2. Server sends a digital certificate.
+3. Client verifies the certificate with the CA.
+4. Secure symmetric key is exchanged using asymmetric encryption.
+5. Encrypted communication begins.
+
+---
+
+## 4. SSL/TLS Overview
+
+| Component       | Description |
+|----------------|-------------|
+| SSL            | Secure Sockets Layer (now deprecated) |
+| TLS            | Transport Layer Security (used in HTTPS today) |
+| Cipher Suites  | Defines the encryption, key exchange, and MAC algorithms |
+| Certificates   | Verify the identity of the website |
+| CA             | Certificate Authority, a trusted third party |
+
+---
+
+## 5. HTTP Methods
+
+| Method   | Description |
+|----------|-------------|
+| GET      | Requests data from the server |
+| POST     | Sends data to the server |
+| PUT      | Updates existing resource |
+| DELETE   | Deletes a specified resource |
+| HEAD     | Same as GET but returns only headers |
+| OPTIONS  | Returns allowed HTTP methods |
+| PATCH    | Partially updates a resource |
+
+---
+
+## 6. HTTP vs HTTPS - Detailed Comparison
+
+| Feature           | HTTP                         | HTTPS                          |
+|------------------|------------------------------|--------------------------------|
+| Full Form        | HyperText Transfer Protocol  | HyperText Transfer Protocol Secure |
+| Port             | 80                           | 443                            |
+| Security         | Unsecured                    | Encrypted using SSL/TLS        |
+| Encryption       | None                         | End-to-end encryption          |
+| Certificate      | Not required                 | Requires SSL/TLS certificate   |
+| SEO              | Neutral                      | SEO-boosted by Google          |
+| Trust Indicator  | No padlock icon              | Padlock icon in browser        |
+| Performance      | Slightly faster              | Slight overhead due to encryption |
+| Use Case         | Public/non-sensitive data    | Secure login, payments, private data |
+
+---
+
+## 7. Why Use HTTPS?
+
+-  Secures communication
+-  Protects user data (login, payments)
+-  Prevents MITM (Man-in-the-middle) attacks
+-  Increases website trust and credibility
+-  Required for PCI DSS (Payment Card Industry Data Security Standard) compliance
+-  Google Chrome marks HTTP sites as **Not Secure**
+
+---
+
+## 8. Related Terms
+
+| Term               | Description |
+|--------------------|-------------|
+| SSL Certificate    | Proves website’s identity and enables HTTPS |
+| TLS                | Current standard protocol for HTTPS |
+| CA (Cert Authority)| Issues trusted certificates |
+| MITM Attack        | Intercepting and altering data between client and server |
+| PKI                | Public Key Infrastructure used for certificate management |
+
+---
+
+## 9. How to Identify HTTPS in Browser
+
+- 🔒 Padlock icon before URL
+- `https://` prefix in address bar
+- Option to view certificate details in browser settings
+
+---
+
+## 10. Mnemonics to Remember
+
+- **HTTP:** "Hackers Try To Peek"
+- **HTTPS:** "Hackers Terminated via Padlock Securely"
+- **SSL/TLS:** "Secure Socket Layer / Transport Layer Security"
+
+---
+
+## 11. Summary
+
+| Criteria     | HTTP                      | HTTPS                         |
+|--------------|---------------------------|-------------------------------|
+| Protocol     | Application Layer         | Application Layer with TLS    |
+| Data Format  | Plaintext                 | Encrypted                     |
+| Suitable For | Non-sensitive websites    | All modern websites, especially with logins or transactions |
+
+---
+
+## 12. Final Note
+
+Always prefer **HTTPS** when deploying websites. It protects both you and your users. You can get free SSL certificates from services like [Let’s Encrypt](https://letsencrypt.org).
+
+---
