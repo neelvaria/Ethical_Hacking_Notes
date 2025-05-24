@@ -162,7 +162,3 @@ TCP uses **AIMD (Additive Increase Multiplicative Decrease)** strategy to adjust
 > - YouTube videos linked are external resources and may be subject to change or removal by their respective creators.
 
 ---
-**Happy Learning!** 🚀  
-Feel free to share or customize this guide for your study or teaching needs.
-
----

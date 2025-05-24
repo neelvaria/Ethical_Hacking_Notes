@@ -351,7 +351,7 @@ The future of UDP looks promising, particularly with the rise of real-time appli
 5. **Edge Computing**: Distributed computing architectures may benefit from the stateless nature and low overhead of UDP.
 6. **Enhanced Security**: Continued development of security protocols like DTLS will make UDP more viable for secure communications.
 7. **Congestion Control Improvements**: Research into better congestion control mechanisms for UDP-based protocols will help address one of its main limitations.
-
+---
 
 ## References and Further Reading
 

@@ -9,9 +9,9 @@ Welcome to the **Ethical Hacking Notes** repository! This is a curated collectio
 This repository includes notes on:
 
 - [**Footprinting and Reconnaissance**](https://github.com/neelvaria/Ethical_Hacking_Notes/blob/master/Reconnaissance_Phase/Reconnaissance%20Phase%20of%20Ethical%20Hackin.md)
-- [**Scanning Networks**]
-- [ **Enumeration** ]
-- [**Vulnerability Analysis**]
+- **Scanning Networks**
+- **Enumeration**
+- **Vulnerability Analysis**
 - **System Hacking**
 - **Malware Threats**
 - **Sniffing**
@@ -89,4 +89,4 @@ This repository serves as:
  
 > Let me know if you’d like me to insert your actual username or profile links, or if you want to add contribution badges, a contributors table, or GitHub Actions to auto-check PRs.
 
-
+---
