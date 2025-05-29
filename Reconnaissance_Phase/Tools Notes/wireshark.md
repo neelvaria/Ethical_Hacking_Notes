@@ -60,6 +60,7 @@
 
 **Reference Screenshot: Capture Interfaces Dialog**
 
-![Wireshark Capture Interfaces](E:/Ethical_Hacking_Notes/Reconnaissance_Phase/Images/ws-main.png)
+![Wireshark Capture Interfaces](https://github.com/neelvaria/Ethical_Hacking_Notes/blob/master/Reconnaissance_Phase/Images/wsmain.png)
 *Figure: Wireshark Capture Interfaces Dialog* 
+
 ---
