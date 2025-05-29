@@ -87,5 +87,67 @@
 
 **Reference Screenshot: Filter Toolbar**
 
-![Wireshark Filter Toolbar](https://networkproguide.com/wp-content/uploads/2020/09/wireshark-filter-toolbar.png)
+![Wireshark Filter Toolbar](https://raw.githubusercontent.com/neelvaria/Ethical_Hacking_Notes/master/Reconnaissance_Phase/Images/ws_filter.png)
 *Figure: Wireshark Filter Toolbar for entering display filters* 
+
+---
+
+## Protocol Analysis
+
+- **Protocol Hierarchy**: `Statistics > Protocol Hierarchy` shows protocol breakdown.
+- **Follow Streams**: Right-click a TCP/UDP packet > "Follow TCP/UDP Stream" to view conversation.
+- **Reassembly**: Wireshark can reassemble fragmented packets for easier analysis.
+
+---
+## Common Use Cases
+
+- **Troubleshooting Network Issues**: Identify latency, dropped packets, or retransmissions.
+- **Security Analysis**: Detect suspicious traffic, malware, or unauthorized access.
+- **Protocol Development**: Debug and verify custom or standard protocol implementations.
+- **Performance Analysis**: Measure throughput, latency, and network utilization.
+- **Educational Purposes**: Learn about network protocols and packet structures.
+
+---
+## Tips & Best Practices
+
+- **Run as Administrator/Root**: Required for capturing on some interfaces.
+- **Limit Capture Size**: Use filters or set capture limits to avoid large files.
+- **Anonymize Data**: Use Wireshark's tools to remove sensitive information before sharing captures.
+- **Update Regularly**: New protocol support and bug fixes are released frequently.
+- **Use Coloring Rules**: Highlight important traffic for faster analysis.
+
+---
+## Security Considerations
+
+- **Sensitive Data**: Captures may contain passwords, cookies, or personal data.
+- **Legal Compliance**: Ensure you have permission to capture network traffic.
+- **Malicious Traffic**: Be cautious when opening captures from untrusted sources.
+
+---
+
+#### Summary Table
+
+| Command Example                                      | Description                                    |
+|------------------------------------------------------|------------------------------------------------|
+| `wireshark -i eth0`                                  | Capture on eth0                                |
+| `wireshark -i eth0 -k -f "tcp port 443"`             | Capture HTTPS traffic on eth0                  |
+| `wireshark -i eth1 -a duration:300 -w capture.pcap`  | Capture 5 minutes on eth1, save to file        |
+| `wireshark -r file.pcap -Y "http"`                   | Open capture file, show only HTTP packets      |
+| `tshark -i eth0 -f "port 53" -w dns_traffic.pcap`    | Terminal capture DNS traffic, save to file     |
+
+---
+
+## Resources
+
+- **Official Website**: [https://www.wireshark.org/](https://www.wireshark.org/)
+- **User Guide**: [Wireshark User’s Guide](https://www.wireshark.org/docs/wsug_html_chunked/)
+- **Sample Captures**: [Wireshark Sample Captures](https://wiki.wireshark.org/SampleCaptures)
+- **Display Filter Reference**: [Wireshark Display Filter Reference](https://www.wireshark.org/docs/dfref/)
+
+---
+
+## Conclusion
+
+> Wireshark is a powerful tool for anyone working with networks, from beginners to experts. Mastering its features can significantly enhance your ability to analyze, troubleshoot, and secure network communications.
+
+---
