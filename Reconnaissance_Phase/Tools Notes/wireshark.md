@@ -60,7 +60,32 @@
 
 **Reference Screenshot: Capture Interfaces Dialog**
 
-![Wireshark Capture Interfaces](https://github.com/neelvaria/Ethical_Hacking_Notes/blob/master/Reconnaissance_Phase/Images/wsmain.png)
+![Wireshark Capture Interfaces](https://raw.githubusercontent.com/neelvaria/Ethical_Hacking_Notes/master/Reconnaissance_Phase/Images/wsmain.png)
 *Figure: Wireshark Capture Interfaces Dialog* 
 
 ---
+
+## Filters
+
+### Capture Filters
+
+- Applied before capturing, limits what is recorded.
+- Syntax is similar to tcpdump.
+- **Examples**:
+  - Capture only HTTP: `tcp port 80`
+  - Capture traffic from IP: `host 192.168.1.1`
+  - Capture only TCP: `tcp`
+
+### Display Filters
+
+- Applied after capture, for viewing specific packets.
+- More powerful and flexible than capture filters.
+- **Examples**:
+  - Show only HTTP: `http`
+  - Show packets from IP: `ip.src == 192.168.1.1`
+  - Show TCP SYN packets: `tcp.flags.syn == 1 && tcp.flags.ack == 0`
+
+**Reference Screenshot: Filter Toolbar**
+
+![Wireshark Filter Toolbar](https://networkproguide.com/wp-content/uploads/2020/09/wireshark-filter-toolbar.png)
+*Figure: Wireshark Filter Toolbar for entering display filters* 
